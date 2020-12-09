@@ -17,6 +17,7 @@
 
     <modules>
         <module>goods-server</module>
+        <module>goods-api</module>
     </modules>
 
     <properties>
@@ -46,6 +47,13 @@
             <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok-maven-plugin</artifactId>
+            <version>1.18.4.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -73,6 +81,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
     </build>
 
     <repositories>

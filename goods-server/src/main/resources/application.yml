@@ -1,10 +1,8 @@
 eureka:
   client:
     serviceUrl:
-      #      eureka的注册中心地址
       defaultZone: http://localhost:8888/eureka/
 server:
-  #  此项目端口号
   port: 8889
 spring:
   datasource:
@@ -13,5 +11,4 @@ spring:
     password: 123
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
-    #    注册进eureka的名字
     name: goods-server
