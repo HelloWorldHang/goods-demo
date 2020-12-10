@@ -33,7 +33,7 @@ public class GoodsDTO {
 
         @ApiModelProperty("详情")
         @NotNull
-        private String desc;
+        private String goodsDesc;
 
         @ApiModelProperty("库存")
         @NotNull

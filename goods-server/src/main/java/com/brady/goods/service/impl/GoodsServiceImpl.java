@@ -5,7 +5,6 @@ import com.brady.goods.entity.Goods;
 import com.brady.goods.mapper.GoodsMapper;
 import com.brady.goods.service.GoodsService;
 import com.brady.goods.utils.DateUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,7 +23,7 @@ public class GoodsServiceImpl implements GoodsService {
         Goods goods = new Goods();
         goods.setGoodsName(reqDto.getGoodsName());
         goods.setPrice(reqDto.getPrice());
-        goods.setDesc(reqDto.getDesc());
+        goods.setGoodsDesc(reqDto.getGoodsDesc());
         goods.setInventory(reqDto.getInventory());
         goods.setCreateTime(DateUtil.getCurrentSeconds());
         return goodsMapper.insert(goods);

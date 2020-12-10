@@ -14,7 +14,7 @@ public class GoodsServiceImplTest extends BaseApplication {
 
     @Test
     public void addGoods() {
-        GoodsDTO.AddGoodsDTO goodsDTO = GoodsDTO.AddGoodsDTO.builder().goodsName("火腿肠").price(5.5).desc("好吃的很").inventory(100).build();
+        GoodsDTO.AddGoodsDTO goodsDTO = GoodsDTO.AddGoodsDTO.builder().goodsName("火腿肠").price(5.5).goodsDesc("好吃的很").inventory(100).build();
         int res = goodsService.addGoods(goodsDTO);
         System.out.println(res + "-----------------------------");
     }
