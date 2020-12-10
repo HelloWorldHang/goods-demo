@@ -12,3 +12,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: goods-server
+mybatis:
+  typeAliasesPackage: com.brady.goods.entity
+  mapperLocations: classpath:mapper/*.xml

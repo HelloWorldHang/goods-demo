@@ -21,8 +21,11 @@
                         password="${jdbc.password}"/>
         <!--  实体路径-->
         <javaModelGenerator targetPackage="${package.name}.entity" targetProject="${targetJavaProject}"/>
-        <!--  生成的mapper文件路径      -->
-        <sqlMapGenerator targetPackage="${package.name}.mapper.xml" targetProject="${targetJavaProject}"/>
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="ture"/>
+        </sqlMapGenerator>
         <!--  dao接口路径-->
         <javaClientGenerator targetPackage="${package.name}.mapper" targetProject="${targetJavaProject}"
                              type="XMLMAPPER"/>
