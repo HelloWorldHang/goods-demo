@@ -7,6 +7,7 @@ import com.brady.goods.mapper.GoodsMapper;
 import com.brady.goods.service.GoodsService;
 import com.brady.goods.utils.DateUtil;
 import com.brady.goods.vo.GoodsVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ import java.util.List;
  * @create: 2020-12-07 22:54
  */
 @Service
+@Slf4j
 public class GoodsServiceImpl implements GoodsService {
     @Resource
     GoodsMapper goodsMapper;
