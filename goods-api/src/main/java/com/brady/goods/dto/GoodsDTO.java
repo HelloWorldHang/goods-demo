@@ -39,4 +39,27 @@ public class GoodsDTO {
         @NotNull
         private Integer inventory;
     }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @ApiModel("更新商品DTO")
+    public static class UpdateGoodsDTO {
+        @ApiModelProperty("id")
+        @NotNull
+        private Integer id;
+
+        @ApiModelProperty("商品名")
+        private String goodsName;
+
+        @ApiModelProperty("商品价格")
+        private Double price;
+
+        @ApiModelProperty("详情")
+        private String goodsDesc;
+
+        @ApiModelProperty("库存")
+        private Integer inventory;
+    }
 }
