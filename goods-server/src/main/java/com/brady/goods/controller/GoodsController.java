@@ -4,11 +4,11 @@ import com.brady.goods.dto.GoodsDTO;
 import com.brady.goods.export.GoodsApi;
 import com.brady.goods.service.GoodsService;
 import com.brady.goods.vo.GoodsVO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,10 +16,12 @@ import java.util.List;
  */
 @RestController
 public class GoodsController implements GoodsApi {
-    @Autowired
+    @Resource
     GoodsService goodsService;
+
     @Override
     public Integer addGoods(@Validated @RequestBody GoodsDTO.AddGoodsDTO dto) {
+
         return goodsService.addGoods(dto);
     }
 
@@ -29,12 +31,17 @@ public class GoodsController implements GoodsApi {
     }
 
     @Override
+    public List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto) {
+        return goodsService.queryGoodsByExample(dto);
+    }
+
+    @Override
     public Integer updateGoods(@Validated @RequestBody GoodsDTO.UpdateGoodsDTO dto) {
         return goodsService.updateGoods(dto);
     }
 
     @Override
-    public Integer queryGoods(Integer id) {
+    public Integer deleteGoods(@Validated @RequestBody Integer id) {
         return goodsService.deleteGoods(id);
     }
 }

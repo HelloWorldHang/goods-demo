@@ -31,14 +31,24 @@ public interface GoodsApi {
     Integer addGoods(@Validated @RequestBody GoodsDTO.AddGoodsDTO dto);
 
     /**
-     * 查询商品
+     * 查询所有商品
      *
      * @param
-     * @return Integer
+     * @return
      */
     @ApiOperation(value = "查询商品", response = GoodsVO.class)
     @PostMapping(value = "/goods/queryGoods", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
     List<GoodsVO> queryGoods();
+
+    /**
+     * 模糊查询商品
+     *
+     * @param dto
+     * @return goodsVOS
+     */
+    @ApiOperation(value = "模糊查询商品", response = GoodsVO.class)
+    @PostMapping(value = "/goods/queryGoodsByName", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
+    List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto);
 
     /**
      * 增加商品
@@ -58,5 +68,5 @@ public interface GoodsApi {
      */
     @ApiOperation(value = "删除商品", response = Integer.class)
     @PostMapping(value = "/goods/deleteGoods", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
-    Integer queryGoods(Integer id);
+    Integer deleteGoods(@Validated @RequestBody Integer id);
 }

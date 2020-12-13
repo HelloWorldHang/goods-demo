@@ -6,6 +6,7 @@ import com.brady.goods.entity.GoodsExample;
 import com.brady.goods.mapper.GoodsMapper;
 import com.brady.goods.service.GoodsService;
 import com.brady.goods.utils.DateUtil;
+import com.brady.goods.utils.DozerUtils;
 import com.brady.goods.vo.GoodsVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.brady.goods.utils.DozerUtils.getGoodsVOS;
 
 /**
  * @description:
@@ -32,7 +35,7 @@ public class GoodsServiceImpl implements GoodsService {
         goods.setGoodsDesc(reqDto.getGoodsDesc());
         goods.setInventory(reqDto.getInventory());
         goods.setCreateTime(DateUtil.getCurrentSeconds());
-        return goodsMapper.insert(goods);
+        return goodsMapper.insertSelective(goods);
     }
 
     @Override
@@ -40,17 +43,26 @@ public class GoodsServiceImpl implements GoodsService {
         GoodsExample example = new GoodsExample();
         example.createCriteria().andStatusEqualTo((byte)0);
         List<Goods> goodsList = goodsMapper.selectByExample(example);
-        List<GoodsVO> vos = new ArrayList<>();
-        for (Goods goods : goodsList) {
-            GoodsVO goodsVO = new GoodsVO();
-            goodsVO.setGoodsName(goods.getGoodsName());
-            goodsVO.setPrice(goods.getPrice());
-            goodsVO.setGoodsDesc(goods.getGoodsDesc());
-            goodsVO.setSales(goods.getSales());
-            goodsVO.setInventory(goods.getInventory());
-            vos.add(goodsVO);
-        }
+        List<GoodsVO> vos = DozerUtils.getGoodsVOS(goodsList);
         return vos;
+    }
+
+    @Override
+    public List<GoodsVO> queryGoodsByExample(GoodsDTO.QueryGoodsDTO dto) {
+        GoodsExample example = new GoodsExample();
+        GoodsExample.Criteria criteria = example.createCriteria().andGoodsNameLike("%" + dto.getGoodsName() + "%");
+        if (dto.getLowPrice() != null){
+            criteria.andPriceGreaterThanOrEqualTo(dto.getLowPrice());
+        }
+        if (dto.getHighPrice() != null){
+            criteria.andPriceLessThanOrEqualTo(dto.getHighPrice());
+        }
+        if (dto.getGoodsDesc() != null){
+            criteria.andGoodsDescLike("%" + dto.getGoodsDesc() + "%");
+        }
+
+        List<Goods> goods = goodsMapper.selectByExample(example);
+        return DozerUtils.getGoodsVOS(goods);
     }
 
     @Override

@@ -21,10 +21,17 @@ public interface GoodsService {
     int addGoods(GoodsDTO.AddGoodsDTO reqDto);
 
     /**
-     * 查询商品
+     * 查询所有商品
      * @return
      */
     List<GoodsVO> queryGoods();
+
+    /**
+     * 根据商品名模糊查询
+     * @param dto
+     * @return goodsVO
+     */
+    List<GoodsVO> queryGoodsByExample(GoodsDTO.QueryGoodsDTO dto);
 
     /**
      * 更新商品
@@ -39,5 +46,5 @@ public interface GoodsService {
      * @return
      */
     Integer deleteGoods(Integer id);
-    
+
 }

@@ -7,8 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
+import javax.validation.constraints.Size;
 
 /**
  * @description: *
@@ -61,5 +62,28 @@ public class GoodsDTO {
 
         @ApiModelProperty("库存")
         private Integer inventory;
+    }
+
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @ApiModel("查询商品通用DTO")
+    public static class QueryGoodsDTO {
+
+        @ApiModelProperty("商品名")
+        @NotNull
+        @Size(min = 1, max = 32)
+        private String goodsName;
+
+        @ApiModelProperty("商品价格下限")
+        private Double lowPrice;
+
+        @ApiModelProperty("商品价格上限")
+        private Double highPrice;
+
+        @ApiModelProperty("详情")
+        private String goodsDesc;
     }
 }
