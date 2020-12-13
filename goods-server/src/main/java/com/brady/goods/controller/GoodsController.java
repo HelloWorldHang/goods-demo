@@ -31,7 +31,12 @@ public class GoodsController implements GoodsApi {
     }
 
     @Override
-    public List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto) {
+    public List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsByNameDTO dto) {
+        return goodsService.queryGoodsByName(dto);
+    }
+
+    @Override
+    public List<GoodsVO> queryGoodsByExample(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto) {
         return goodsService.queryGoodsByExample(dto);
     }
 

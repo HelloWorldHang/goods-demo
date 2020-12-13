@@ -13,6 +13,12 @@ spring:
     username: root
     password: 123
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    # Redis数据库索引
+    database: 0
+    host: 192.168.67.101
+    port: 6379
+    password: 123456
   application:
     name: goods-server
 mybatis:

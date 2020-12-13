@@ -64,12 +64,24 @@ public class GoodsDTO {
         private Integer inventory;
     }
 
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @ApiModel("根据名字查询商品DTO")
+    public static class QueryGoodsByNameDTO{
+        @ApiModelProperty("商品名")
+        @NotNull
+        @Size(min = 1, max = 32)
+        private String goodsName;
+    }
+
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    @ApiModel("查询商品通用DTO")
+    @ApiModel("条件查询商品DTO")
     public static class QueryGoodsDTO {
 
         @ApiModelProperty("商品名")

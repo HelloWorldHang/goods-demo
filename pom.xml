@@ -26,11 +26,12 @@
     </properties>
 
     <dependencies>
+        <!--redis包-->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>3.3.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>io.springfox</groupId>

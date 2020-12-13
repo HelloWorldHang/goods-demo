@@ -1,5 +1,7 @@
 package com.brady.goods.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TestController {
+    @Autowired
+    RedisTemplate<String, String> redisTemplate;
+
     @RequestMapping("/test")
     public String test(){
-        return "this is test";
+        String num1 = redisTemplate.opsForValue().get("num1");
+        return num1;
     }
 
 }

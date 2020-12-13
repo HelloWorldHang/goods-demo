@@ -62,7 +62,22 @@ public class GoodsServiceImpl implements GoodsService {
         }
 
         List<Goods> goods = goodsMapper.selectByExample(example);
+        if (goods == null){
+            return null;
+        }
         return DozerUtils.getGoodsVOS(goods);
+    }
+
+    @Override
+    public List<GoodsVO> queryGoodsByName(GoodsDTO.QueryGoodsByNameDTO dto) {
+
+        GoodsExample example = new GoodsExample();
+        example.createCriteria().andGoodsNameLike("%" + dto.getGoodsName() + "%");
+        List<Goods> goods = goodsMapper.selectByExample(example);
+        if (goods != null){
+            return DozerUtils.getGoodsVOS(goods);
+        }
+        return null;
     }
 
     @Override

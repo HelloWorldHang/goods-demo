@@ -27,11 +27,18 @@ public interface GoodsService {
     List<GoodsVO> queryGoods();
 
     /**
-     * 根据商品名模糊查询
+     * 条件查询
      * @param dto
      * @return goodsVO
      */
     List<GoodsVO> queryGoodsByExample(GoodsDTO.QueryGoodsDTO dto);
+
+    /**
+     * 根据名称模糊查询
+     * @param dto
+     * @return goodsVO
+     */
+    List<GoodsVO> queryGoodsByName(GoodsDTO.QueryGoodsByNameDTO dto);
 
     /**
      * 更新商品

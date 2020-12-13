@@ -41,14 +41,24 @@ public interface GoodsApi {
     List<GoodsVO> queryGoods();
 
     /**
-     * 模糊查询商品
+     * 根据名字查询商品
+     *
+     * @param dto
+     * @return goodsVOS
+     */
+    @ApiOperation(value = "根据名字查询商品", response = GoodsVO.class)
+    @PostMapping(value = "/goods/queryGoodsByName", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
+    List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsByNameDTO dto);
+
+    /**
+     * 条件查询商品
      *
      * @param dto
      * @return goodsVOS
      */
     @ApiOperation(value = "模糊查询商品", response = GoodsVO.class)
-    @PostMapping(value = "/goods/queryGoodsByName", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
-    List<GoodsVO> queryGoodsByName(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto);
+    @PostMapping(value = "/goods/queryGoodsByExample", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
+    List<GoodsVO> queryGoodsByExample(@Validated @RequestBody GoodsDTO.QueryGoodsDTO dto);
 
     /**
      * 增加商品
