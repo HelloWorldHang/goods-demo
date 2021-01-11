@@ -4,6 +4,7 @@ import com.brady.goods.dto.GoodsDTO;
 import com.brady.goods.export.GoodsApi;
 import com.brady.goods.service.GoodsService;
 import com.brady.goods.vo.GoodsVO;
+import com.brady.goods.vo.HotWorld;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,9 @@ import java.util.List;
  */
 @RestController
 public class GoodsController implements GoodsApi {
+
     @Resource
-    GoodsService goodsService;
+    private GoodsService goodsService;
 
     @Override
     public Integer addGoods(@Validated @RequestBody GoodsDTO.AddGoodsDTO dto) {
@@ -48,5 +50,10 @@ public class GoodsController implements GoodsApi {
     @Override
     public Integer deleteGoods(@Validated @RequestBody Integer id) {
         return goodsService.deleteGoods(id);
+    }
+
+    @Override
+    public List<HotWorld> getHotWord() {
+        return goodsService.getHotWordService();
     }
 }

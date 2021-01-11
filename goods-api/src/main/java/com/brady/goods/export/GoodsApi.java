@@ -3,7 +3,9 @@ package com.brady.goods.export;
 import com.brady.goods.ServiceNameConst;
 import com.brady.goods.dto.GoodsDTO;
 import com.brady.goods.vo.GoodsVO;
+import com.brady.goods.vo.HotWorld;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
@@ -79,4 +81,12 @@ public interface GoodsApi {
     @ApiOperation(value = "删除商品", response = Integer.class)
     @PostMapping(value = "/goods/deleteGoods", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
     Integer deleteGoods(@Validated @RequestBody Integer id);
+
+    /**
+     * 得到热词
+     * @return hotWorlds
+     */
+    @ApiModelProperty(value = "得到热词")
+    @PostMapping(value = "/goods/getHotWorld", produces = APPLICATION_JSON_UTF8_VALUE, consumes = APPLICATION_JSON_UTF8_VALUE)
+    List<HotWorld> getHotWord();
 }

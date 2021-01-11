@@ -3,6 +3,7 @@ package com.brady.goods.service;
 import com.brady.goods.dto.GoodsDTO;
 import com.brady.goods.entity.Goods;
 import com.brady.goods.vo.GoodsVO;
+import com.brady.goods.vo.HotWorld;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +54,11 @@ public interface GoodsService {
      * @return
      */
     Integer deleteGoods(Integer id);
+
+    /**
+     * 得到热词
+     * @return
+     */
+    List<HotWorld> getHotWordService();
 
 }
